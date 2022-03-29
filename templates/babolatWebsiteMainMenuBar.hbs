@@ -1,0 +1,108 @@
+---
+{
+    "stream": {
+        "$id": "babolat-mainMenuBar",
+        "source": "knowledgeGraph",
+        "destination": "pages",
+      "filter": {
+        "entityTypes": [
+          "ce_babolatWebsiteMainMenuBar"
+        ]
+      },
+      "fields": [
+        "id",
+        "uid",
+        "meta",
+        "name",
+        "c_slug",
+        "c_relatedMenuCategory.name",
+        "c_relatedMenuCategory.slug",
+        "c_relatedMenuCategory.photoGallery"
+      ],
+      "localization": {
+          "locales": ["en"]
+      }
+    },
+    "urlFormat": "{{c_slug}}"
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{name}}</title>
+    <meta name="description" content=Category page for {{name}}.>
+    {{>head}}
+    {{>schema-productCategory}}
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="w-full">
+    <div class="centered-container">
+        {{>navbar}}
+    </div>
+    <!-- Container for demo purpose -->
+    {{#each c_relatedMenuCategory}}
+<div>
+
+  <!-- Section: Design Block -->
+  <section class="mb-20 background-radial-gradient">
+    <style>
+      .background-radial-gradient {
+        background-color: hsl(218, 41%, 15%);
+        background-image: radial-gradient(
+          650px circle at 0% 0%,
+          hsl(218, 41%, 35%) 15%,
+          hsl(218, 41%, 30%) 35%,
+          hsl(218, 41%, 20%) 75%,
+          hsl(218, 41%, 19%) 80%,
+          transparent 100%
+        ),
+        radial-gradient(
+          1250px circle at 100% 100%,
+          hsl(218, 41%, 45%) 15%,
+          hsl(218, 41%, 30%) 35%,
+          hsl(218, 41%, 20%) 75%,
+          hsl(218, 41%, 19%) 80%,
+          transparent 100%
+        );
+      }
+    </style>
+        <div class="px-6 py-12 md:px-12 text-center lg:text-left">
+          <div class="container mx-auto xl:px-32">
+            <div class="grid lg:grid-cols-2 gap-12 flex items-center">
+                <a href="{{slug}}">
+              <div class="mt-12 lg:mt-0">
+                <h1 href="{{slug}}" class="text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight mb-12" style="color: hsl(218, 81%, 95%);">{{name}}</h1>
+              </div>
+              </a>
+              <a href="{{slug}}">
+              <div class="mb-12 lg:mb-0">
+                <img
+                  src="{{photoGallery.[0].image.url}}"
+                  class="w-full rounded-lg shadow-lg"
+                  alt=""
+                />
+              </div>
+          </a>
+            </div>
+          </div>
+        </div>
+  </section>
+  <!-- Section: Design Block -->
+</div>
+
+{{/each}}
+<!-- Container for demo purpose -->
+    </div>
+    <div class="w-full bg-gray-50">
+        <div class="centered-container">
+            {{>footer}}
+        </div>
+    </div>
+</body> 
+</html>
